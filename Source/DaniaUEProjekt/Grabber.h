@@ -24,7 +24,7 @@ private:
 	APlayerController * playerController;
 	FVector location;
 	FRotator rotation;
-	int reach = 160;
+	int reach = 210;
 
 	UPhysicsHandleComponent* physicsHandle = nullptr;
 
