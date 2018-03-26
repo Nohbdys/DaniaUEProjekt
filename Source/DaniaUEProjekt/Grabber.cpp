@@ -28,7 +28,7 @@ void UGrabber::BeginPlay()
 	if (inputComponent)
 	{
 		inputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
-		inputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Released);
+		inputComponent->BindAction("GrabRelease", IE_Pressed, this, &UGrabber::Released);
 
 		UE_LOG(LogTemp, Warning, TEXT("INPUT COMPONENT FOUND"));
 
