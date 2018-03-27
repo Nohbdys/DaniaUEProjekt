@@ -12,12 +12,12 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnExitAction);
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class DANIAUEPROJEKT_API UExitTrigger : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
 	UExitTrigger();
 
@@ -30,11 +30,11 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(BlueprintAssignable)
 		FOnExitAction onExitRequest;
-	
+
 };
