@@ -29,6 +29,9 @@ void UGrabber::BeginPlay()
 	{
 		inputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
 		inputComponent->BindAction("GrabRelease", IE_Pressed, this, &UGrabber::Released);
+		inputComponent->BindAction("PullCloser", IE_Pressed, this, &UGrabber::PullCloser);
+		inputComponent->BindAction("PullAway", IE_Pressed, this, &UGrabber::PullAway);
+
 
 		UE_LOG(LogTemp, Warning, TEXT("INPUT COMPONENT FOUND"));
 
@@ -94,9 +97,28 @@ void UGrabber::MoveObject()
 	FRotator rotation;
 	// ...
 	playerController->GetPlayerViewPoint(OUT location, OUT rotation);
-	FVector LineTraceEnd = location + rotation.Vector() * reach;
+	FVector LineTraceEnd = location + rotation.Vector() * (reach + addedReach);
 	if (physicsHandle->GrabbedComponent)
 	{
 		physicsHandle->SetTargetLocation(LineTraceEnd);
+	}
+}
+
+void UGrabber::PullAway()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Rolled Upwards"));
+	if (addedReach <= 70)
+	{
+	addedReach += 10;
+	}
+}
+
+void UGrabber::PullCloser()
+{
+
+	UE_LOG(LogTemp, Warning, TEXT("Rolled Downwards"));
+	if (addedReach >= -120)
+	{
+		addedReach -= 10;
 	}
 }

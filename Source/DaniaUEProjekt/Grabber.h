@@ -25,6 +25,7 @@ private:
 	FVector location;
 	FRotator rotation;
 	int reach = 210;
+	int addedReach = 0;
 
 	UPhysicsHandleComponent* physicsHandle = nullptr;
 
@@ -41,6 +42,8 @@ public:
 	void Grab();
 	void Released();
 	void MoveObject();
+	void PullAway();
+	void PullCloser();
 
 	
 };
